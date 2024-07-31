@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:chat_app_firebase/auth/authentication.dart';
+import 'package:chat_app_firebase/services/auth/authentication.dart';
 import 'package:chat_app_firebase/constants/sizes.dart';
 import 'package:chat_app_firebase/presentation/widgets/custom_button.dart';
 import 'package:chat_app_firebase/presentation/widgets/custom_textfield.dart';

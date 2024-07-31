@@ -1,9 +1,6 @@
-import 'package:chat_app_firebase/auth/authentication.dart';
-import 'package:chat_app_firebase/presentation/pages/home_page.dart';
+import 'package:chat_app_firebase/services/auth/authentication.dart';
 import 'package:chat_app_firebase/presentation/pages/settings_page.dart';
-import 'package:chat_app_firebase/presentation/widgets/drawer_menu_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});

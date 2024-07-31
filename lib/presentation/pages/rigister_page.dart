@@ -1,4 +1,6 @@
+import 'dart:math';
 
+import 'package:chat_app_firebase/auth/authentication.dart';
 import 'package:chat_app_firebase/constants/sizes.dart';
 import 'package:chat_app_firebase/presentation/widgets/custom_button.dart';
 import 'package:chat_app_firebase/presentation/widgets/custom_textfield.dart';
@@ -7,11 +9,44 @@ import 'package:flutter/material.dart';
 class RegisterPage extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
   RegisterPage({super.key, required this.onTap});
   final void Function()? onTap;
 
-  void register() {}
+  void register(BuildContext context) {
+    final auth = AuthService();
+
+    // checking password match
+    if (_passwordController.text == _confirmPasswordController.text) {
+      try {
+        auth.signUpUserWithEmailPassword(
+          _emailController.text,
+          _passwordController.text,
+        );
+      } catch (e) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text(e.toString()),
+          ),
+        );
+      }
+    } else {
+      //const SnackBar(content: Text("password doesn't match $e"));
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text("Password doesn't match!"),
+          content: const Text("try to correct passwords"),
+          actions: [
+            TextButton(
+                onPressed: () => Navigator.pop, child: const Text("Cancel"))
+          ],
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +90,7 @@ class RegisterPage extends StatelessWidget {
             ),
             Appsizes.sizeTwentyFive,
             CustomButton(
-              ontap: register,
+              ontap: () => register(context),
               buttonText: "Register",
             ),
             Appsizes.sizeTwentyFive,

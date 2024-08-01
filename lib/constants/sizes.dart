@@ -16,6 +16,9 @@ class Appsizes {
   static const sizeTwenty = SizedBox(
     height: 20,
   );
+  static const sizeTwentyW = SizedBox(
+    width: 20,
+  );
   static const sizeTen = SizedBox(
     height: 10,
   );

@@ -17,32 +17,32 @@ class ChatServices {
   }
 
   // send messeges
-  Future<void> sendMesseges(String recieverID, messege) async {
+  Future<void> sendMessages(String recieverID, message) async {
     // get current user info
     final currentUserId = _auth.currentUser!.uid;
     final currentUserEmail = _auth.currentUser!.email;
     final Timestamp timestamp = Timestamp.now();
 
     // create new messeges
-    Message newMessege = Message(
+    Message newMessage = Message(
       senderID: currentUserId,
       senderEmail: currentUserEmail!,
       recieverID: recieverID,
-      message: messege,
+      message: message,
       timestamp: timestamp,
     );
 
     // construct chat room ID for the two users (sorted to ensure uniqueness)
     List<String> ids = [currentUserId, recieverID];
     ids.sort();
-    String chatRoomID = ids.join();
+    String chatRoomID = ids.join('_');
 
-    // add messeges to the database
+    // add new messeges to the database
     await _firebaseFirestore
         .collection("chat_rooms")
         .doc(chatRoomID)
-        .collection("messeges")
-        .add(newMessege.toMap());
+        .collection("messages") // here was messeges
+        .add(newMessage.toMap());
   }
 
   // get messeges

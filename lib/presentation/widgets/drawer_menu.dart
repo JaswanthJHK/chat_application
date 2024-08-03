@@ -12,8 +12,9 @@ class MyDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var textColor = Theme.of(context).colorScheme.secondaryContainer;
     return Drawer(
-      backgroundColor: Theme.of(context).colorScheme.surface,
+      backgroundColor: Theme.of(context).colorScheme.primaryContainer,
       child: Column(
         children: [
           SizedBox(
@@ -40,14 +41,24 @@ class MyDrawer extends StatelessWidget {
               children: [
                 ListTile(
                   leading: const Icon(Icons.home_outlined),
-                  title: const Text("H O M E"),
+                  title: Text(
+                    "H O M E",
+                    style: TextStyle(
+                        color:
+                            Theme.of(context).colorScheme.secondaryContainer),
+                  ),
                   onTap: () {
                     Navigator.pop(context);
                   },
                 ),
                 ListTile(
                   leading: const Icon(Icons.settings_outlined),
-                  title: const Text("S E T T I N G S"),
+                  title: Text(
+                    "S E T T I N G S",
+                    style: TextStyle(
+                        color:
+                            Theme.of(context).colorScheme.secondaryContainer),
+                  ),
                   onTap: () {
                     Navigator.push(
                       context,
@@ -65,7 +76,11 @@ class MyDrawer extends StatelessWidget {
             padding: const EdgeInsets.only(left: 25, bottom: 25),
             child: ListTile(
               leading: const Icon(Icons.logout),
-              title: const Text("L O G O U T"),
+              title: Text(
+                "L O G O U T",
+                style: TextStyle(
+                    color: Theme.of(context).colorScheme.secondaryContainer),
+              ),
               onTap: logOut,
             ),
           ),

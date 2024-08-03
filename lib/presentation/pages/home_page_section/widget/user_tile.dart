@@ -28,12 +28,13 @@ class UserTile extends StatelessWidget {
               children: [
                 Icon(
                   Icons.person,
-                  color: AppColour.greyDark,
+                  color: Theme.of(context).colorScheme.secondaryContainer,
                 ),
                 Appsizes.sizeTwentyW,
                 Text(
                   text,
-                  style: TextStyle(color: AppColour.greyDark),
+                  style: TextStyle(
+                      color: Theme.of(context).colorScheme.secondaryContainer),
                 ),
               ],
             ),

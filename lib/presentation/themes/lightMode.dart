@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 ThemeData lightMode = ThemeData(
   colorScheme: ColorScheme.light(
-    surface: Colors.grey.shade300,
-    primary:  Colors.grey.shade500,
+    primaryContainer: Colors.grey.shade300,
+    primary: Colors.grey.shade500,
+    tertiaryContainer:
+        const Color.fromARGB(255, 82, 81, 79), // other user chat color
     secondary: Colors.grey.shade200,
     tertiary: Colors.white,
     secondaryContainer: Colors.grey.shade900,

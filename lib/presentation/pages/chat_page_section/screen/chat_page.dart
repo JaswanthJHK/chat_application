@@ -35,6 +35,7 @@ class ChatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.primaryContainer,
       appBar: AppBar(
         title: Text(recieverEmail),
         centerTitle: true,
@@ -46,7 +47,7 @@ class ChatPage extends StatelessWidget {
           Expanded(
             child: _buildMessageList(),
           ),
-          _buildUserInput(),
+          _buildUserInput(context),
         ],
       ),
     );
@@ -79,7 +80,7 @@ class ChatPage extends StatelessWidget {
 
   Widget _buildMessageItem(DocumentSnapshot doc) {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-   // debugPrint("---------------------====${data["message"]}");
+    // debugPrint("---------------------====${data["message"]}");
     bool isCurrentUser = data['senderID'] == _authService.getCurrentUser()!.uid;
 
     var chatAlignment =
@@ -87,7 +88,7 @@ class ChatPage extends StatelessWidget {
     // var chatColor = isCurrentUser ? AppColour.greylight : AppColour.grey;
 
     return Container(
-      margin:const EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       alignment: chatAlignment,
       child: Column(
         children: [
@@ -99,7 +100,7 @@ class ChatPage extends StatelessWidget {
     //
   }
 
-  Widget _buildUserInput() {
+  Widget _buildUserInput(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 30),
       child: Row(
@@ -112,8 +113,12 @@ class ChatPage extends StatelessWidget {
                 controller: _messageController),
           ),
           IconButton(
+            padding: EdgeInsets.only(right: 25),
             onPressed: sendMessage,
-            icon: const Icon(Icons.arrow_forward),
+            icon: Icon(
+              Icons.arrow_forward,
+              color: Theme.of(context).colorScheme.secondaryContainer,
+            ),
           ),
         ],
       ),

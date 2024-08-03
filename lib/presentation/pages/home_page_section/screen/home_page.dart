@@ -19,6 +19,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       backgroundColor: Theme.of(context).colorScheme.primaryContainer,
       appBar: AppBar(
         title: const Text("Home"),
         centerTitle: true,
@@ -27,6 +28,7 @@ class HomePage extends StatelessWidget {
       ),
       drawer: const MyDrawer(),
       body: _buildUserList(),
+     
     );
   }
 

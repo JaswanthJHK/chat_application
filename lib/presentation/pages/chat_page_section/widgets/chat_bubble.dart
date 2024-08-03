@@ -12,8 +12,10 @@ class ChatBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Radius radiusCurv =const Radius.circular(20);
-    var chatColor = isCurrentUser ? AppColour.greylight : AppColour.grey;
+    Radius radiusCurv = const Radius.circular(20);
+    var chatColor = isCurrentUser
+        ? Theme.of(context).colorScheme.primary
+        : Theme.of(context).colorScheme.tertiaryContainer;
 
     return Container(
       constraints: const BoxConstraints(maxWidth: 350),

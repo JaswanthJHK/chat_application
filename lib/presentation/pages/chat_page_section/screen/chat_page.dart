@@ -1,3 +1,5 @@
+import 'package:chat_app_firebase/constants/colors.dart';
+import 'package:chat_app_firebase/presentation/pages/chat_page_section/widgets/chat_bubble.dart';
 import 'package:chat_app_firebase/presentation/widgets/custom_textfield.dart';
 import 'package:chat_app_firebase/services/auth/authentication.dart';
 import 'package:chat_app_firebase/services/chat/chat_services.dart';
@@ -36,6 +38,8 @@ class ChatPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(recieverEmail),
         centerTitle: true,
+        backgroundColor: Colors.transparent,
+        foregroundColor: AppColour.grey,
       ),
       body: Column(
         children: [
@@ -75,25 +79,44 @@ class ChatPage extends StatelessWidget {
 
   Widget _buildMessageItem(DocumentSnapshot doc) {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-    debugPrint("---------------------====${data["message"]}");
-    return Text(data["message"]);
+   // debugPrint("---------------------====${data["message"]}");
+    bool isCurrentUser = data['senderID'] == _authService.getCurrentUser()!.uid;
+
+    var chatAlignment =
+        isCurrentUser ? Alignment.centerRight : Alignment.centerLeft;
+    // var chatColor = isCurrentUser ? AppColour.greylight : AppColour.grey;
+
+    return Container(
+      margin:const EdgeInsets.all(10),
+      alignment: chatAlignment,
+      child: Column(
+        children: [
+          ChatBubble(message: data["message"], isCurrentUser: isCurrentUser),
+        ],
+      ),
+    );
+
+    //
   }
 
   Widget _buildUserInput() {
-    return Row(
-      children: [
-        Expanded(
-          child: CustomTextfield(
-              hintText: "type a message",
-              obscureText: false,
-              icon: const Icon(Icons.message),
-              controller: _messageController),
-        ),
-        IconButton(
-          onPressed: sendMessage,
-          icon: const Icon(Icons.arrow_forward),
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 30),
+      child: Row(
+        children: [
+          Expanded(
+            child: CustomTextfield(
+                hintText: "type a message",
+                obscureText: false,
+                icon: const Icon(Icons.message),
+                controller: _messageController),
+          ),
+          IconButton(
+            onPressed: sendMessage,
+            icon: const Icon(Icons.arrow_forward),
+          ),
+        ],
+      ),
     );
   }
 }

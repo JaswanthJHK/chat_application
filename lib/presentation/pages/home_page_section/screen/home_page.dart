@@ -1,3 +1,4 @@
+import 'package:chat_app_firebase/constants/colors.dart';
 import 'package:chat_app_firebase/presentation/pages/chat_page_section/screen/chat_page.dart';
 import 'package:chat_app_firebase/presentation/pages/home_page_section/widget/user_tile.dart';
 import 'package:chat_app_firebase/presentation/widgets/drawer_menu.dart';
@@ -21,6 +22,8 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Home"),
         centerTitle: true,
+        backgroundColor: Colors.transparent,
+        foregroundColor: AppColour.grey,
       ),
       drawer: const MyDrawer(),
       body: _buildUserList(),
@@ -38,7 +41,7 @@ class HomePage extends StatelessWidget {
         // data loading time
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(
-            child:  CircularProgressIndicator(
+            child: CircularProgressIndicator(
               backgroundColor: Colors.grey,
               color: Colors.amberAccent,
             ),
@@ -63,7 +66,8 @@ class HomePage extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) => ChatPage(
-                  recieverEmail: userData["email"],recieverID: userData["uid"],
+                  recieverEmail: userData["email"],
+                  recieverID: userData["uid"],
                 ),
               ));
         },

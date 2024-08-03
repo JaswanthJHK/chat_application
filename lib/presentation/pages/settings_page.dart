@@ -1,3 +1,4 @@
+import 'package:chat_app_firebase/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -7,8 +8,10 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:const Text("S E T T I N G S"),
+        title: const Text("S E T T I N G S"),
         centerTitle: true,
+        backgroundColor: Colors.transparent,
+        foregroundColor: AppColour.grey,
       ),
       body: const Center(
         child: Text("S E T T I N G S"),

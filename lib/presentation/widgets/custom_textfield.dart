@@ -7,11 +7,13 @@ class CustomTextfield extends StatelessWidget {
     required this.obscureText,
     required this.icon,
     required this.controller,
+    this.focusNode,
   });
   final String hintText;
   final bool obscureText;
   final Icon icon;
   final TextEditingController controller;
+  final FocusNode? focusNode;
   // final bool showPassIcon;
   // final Icon showIcon;
 //  final Function()? showTap;
@@ -21,6 +23,7 @@ class CustomTextfield extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25),
       child: TextField(
+        focusNode: focusNode,
         controller: controller,
         obscureText: obscureText,
         decoration: InputDecoration(

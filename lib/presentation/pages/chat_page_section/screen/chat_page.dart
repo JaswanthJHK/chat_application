@@ -133,11 +133,16 @@ class _ChatPageState extends State<ChatPage> {
     // var chatColor = isCurrentUser ? AppColour.greylight : AppColour.grey;
 
     return Container(
-      margin: const EdgeInsets.all(10),
+      margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
       alignment: chatAlignment,
       child: Column(
         children: [
-          ChatBubble(message: data["message"], isCurrentUser: isCurrentUser),
+          ChatBubble(
+            message: data["message"],
+            isCurrentUser: isCurrentUser,
+            messageId: doc.id,
+            userId: data['senderID'],
+          ),
         ],
       ),
     );

@@ -4,6 +4,12 @@ class Appsizes {
   static const sizeHundred = SizedBox(
     height: 100,
   );
+  static const sizeSeventy = SizedBox(
+    height: 70,
+  );
+  static const sizeSixty = SizedBox(
+    height: 60,
+  );
   static const sizeFifty = SizedBox(
     height: 50,
   );

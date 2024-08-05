@@ -4,7 +4,6 @@ import 'package:chat_app_firebase/presentation/pages/home_page_section/widget/us
 import 'package:chat_app_firebase/presentation/widgets/drawer_menu.dart';
 import 'package:chat_app_firebase/services/auth/authentication.dart';
 import 'package:chat_app_firebase/services/chat/chat_services.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -12,29 +11,28 @@ class HomePage extends StatelessWidget {
 
   final ChatServices _chatServices = ChatServices();
   final AuthService _authService = AuthService();
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  // final FirebaseAuth _auth = FirebaseAuth.instance;
 
   // current user
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+      backgroundColor: Theme.of(context).colorScheme.primaryContainer,
       appBar: AppBar(
-        title: const Text("Home"),
+        title: const Text("U S E R S"),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         foregroundColor: AppColour.grey,
       ),
       drawer: const MyDrawer(),
       body: _buildUserList(),
-     
     );
   }
 
   Widget _buildUserList() {
     return StreamBuilder(
-      stream: _chatServices.getUserStream(),
+      stream: _chatServices.getUserStreamExcludingBlockedusers(),
       builder: (context, snapshot) {
         // error checking
         if (snapshot.hasError) {

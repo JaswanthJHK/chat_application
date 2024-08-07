@@ -158,7 +158,7 @@ class ChatBubble extends StatelessWidget {
     Radius radiusCurv = const Radius.circular(20);
     var chatColor = isCurrentUser
         ? Theme.of(context).colorScheme.primary
-        : Theme.of(context).colorScheme.tertiaryContainer;
+        : Theme.of(context).colorScheme.shadow;
 
     return GestureDetector(
       onLongPress: () {

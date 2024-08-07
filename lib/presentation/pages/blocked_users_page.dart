@@ -80,8 +80,15 @@ class BlockedUsersPage extends StatelessWidget {
 
           // if no blocked users
           if (blockedUsers.isEmpty) {
-            return const Center(
-              child: Text("No blocked users"),
+            return Center(
+              child: Text(
+                "No blocked users",
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.tertiaryContainer,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25,
+                ),
+              ),
             );
           }
 

@@ -1,4 +1,3 @@
-import 'package:chat_app_firebase/constants/colors.dart';
 import 'package:chat_app_firebase/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
